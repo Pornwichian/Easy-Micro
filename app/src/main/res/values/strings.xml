@@ -5,5 +5,7 @@
     <string name="name">name : </string>
     <string name="user">user : </string>
     <string name="password">password : </string>
+    <string name="title_haveSpace"> มีช่องว่าง </string>
+    <string name="massage_haveSpace">กรุณากรอกุกช่องค่ะ</string>
 
 </resources>

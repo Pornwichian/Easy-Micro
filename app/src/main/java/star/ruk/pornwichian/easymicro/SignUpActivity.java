@@ -51,6 +51,11 @@ public class SignUpActivity extends AppCompatActivity {
 
                     //Have Space
                     Log.d("5NovV1", "Have Space");
+                    MyAlert myAlert = new MyAlert(SignUpActivity.this,
+                            R.drawable.rat48, getResources().getString(R.string.title_haveSpace),
+                            getResources().getString(R.string.massage_haveSpace));
+                    myAlert.MyDialog();
+
 
 
                 }//If
