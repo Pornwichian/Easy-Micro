@@ -2,6 +2,8 @@
     <string name="app_name">Easy Micro</string>
 
     <string name="signUp">สมัครสมาชิก</string>
-
+    <string name="name">name : </string>
+    <string name="user">user : </string>
+    <string name="password">password : </string>
 
 </resources>
