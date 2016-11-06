@@ -1,9 +1,11 @@
 package star.ruk.pornwichian.easymicro;
 
 import android.content.Intent;
+import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
+import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -18,8 +20,13 @@ public class SignUpActivity extends AppCompatActivity {
     private EditText nameEditText, userEditText , passwordEditText;
     private ImageView imageView;
     private Button button;
-    private String nameString,userString, passwordString;
+    private String nameString,userString, passwordString,imageString,
+    imagePathString,imageNameString;
+
+
     private Uri uri;
+    private boolean aBoolean = true;
+
 
 
 
@@ -61,7 +68,17 @@ public class SignUpActivity extends AppCompatActivity {
                             getResources().getString(R.string.massage_haveSpace));
                     myAlert.MyDialog();
 
-                }//If
+                } else if (aBoolean) {
+                    //None choose image
+                    MyAlert myAlert = new MyAlert(SignUpActivity.this,R.drawable.rat48,
+                            getResources().getString(R.string.title_imageChoose),
+                            getResources().getString(R.string.message_imageChoose));
+                    myAlert.MyDialog();
+                } else {
+                    //Upload to server
+
+
+                }
 
             }//Onclick
         });
@@ -101,12 +118,38 @@ public class SignUpActivity extends AppCompatActivity {
                 e.printStackTrace();
             }
 
+            //Check choosed complete
 
+            aBoolean = false;
 
+            //Find path of image choose
+            imagePathString = myFindPath(uri);
+            Log.d("6NovV1", "Path==>" + imagePathString);
 
+            //Find name of Image
+
+            imageNameString = imagePathString.substring(imagePathString.lastIndexOf("/"));
+            Log.d("6NovV1", "Name==>" + imageNameString);
         }//if
 
 
 
     }//On Activity
+
+    private String myFindPath(Uri uri) {
+        String result = null;
+        String[] strings = {MediaStore.Images.Media.DATA};
+        Cursor cursor = getContentResolver().query(uri, strings, null, null, null);
+
+        if (cursor != null) {
+            cursor.moveToFirst();
+            int index = cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
+            result = cursor.getString(index);
+        }else {
+            result = uri.getPath();
+        }
+
+        return result;
+
+    }
 }// Main Class

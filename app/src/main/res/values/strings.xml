@@ -7,5 +7,6 @@
     <string name="password">password : </string>
     <string name="title_haveSpace"> มีช่องว่าง </string>
     <string name="massage_haveSpace">กรุณากรอกุกช่องค่ะ</string>
-
+    <string name="title_imageChoose">ยังไม่ได้เลือกรูปภาพ</string>
+    <string name="message_imageChoose">โปรดเลือกรูปภาพ</string>
 </resources>
